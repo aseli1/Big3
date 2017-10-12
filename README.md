@@ -26,15 +26,21 @@ big_3.team_stats
 Filtering games by team name
 
 ```ruby
-big_3 = Big3::League.new(team_name: "Ball Hogs") # season averages will also be included
+big_3.team_name = "Ball Hogs" # season averages will also be included
 ```
 
 Viewing individual player stats
 
 ```ruby
-big_3 = Big3::League.new(player_name: "Moochie Norris")
+big_3.player_name = "Moochie Norris"
 big_3.player_stats
 # => Returns a hash containing player stats from all games played
+```
+
+Optional parameters on initialization
+
+```ruby
+big_3 = Big3::League.new(team_name: "Trilogy", player_name: "Mike Bibby")
 ```
 
 Finding teams and players
