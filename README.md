@@ -52,7 +52,7 @@ big_3.rosters
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/big_3.
+Bug reports and pull requests are welcome on GitHub at https://github.com/aseli1/big_3.
 
 ## License
 
