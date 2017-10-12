@@ -37,10 +37,10 @@ big_3.player_stats
 # => Returns a hash containing player stats from all games played
 ```
 
-Optional parameters on initialization
+Optional parameters
 
 ```ruby
-big_3 = Big3::League.new(team_name: "Trilogy", player_name: "Mike Bibby")
+Big3::League.new(team_name: "Trilogy", player_name: "Mike Bibby")
 ```
 
 Finding teams and players
