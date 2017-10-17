@@ -21,6 +21,7 @@ all_games = big_3.team_stats["games"]
 # => Returns a hash containing team stats and scores from all games
 
 all_games[32]
+=begin
 # => {"matchup"=>"Trilogy vs 3 Headed Monsters",
 	  "home team"=>"Trilogy",
 	  "away team"=>"3 Headed Monsters",
@@ -103,6 +104,7 @@ all_games[32]
 	      "@fgm3"=>"2"}},
 	  "location"=>"MGM Grand Garden Arena, Las Vegas",
 	  "game_number"=>"33"}
+=end
 ```
 
 Filtering games by team name
@@ -116,35 +118,37 @@ Viewing individual player stats
 ```ruby
 big_3.player_name = "Moochie Norris"
 big_3.player_stats["season"] # season averages
+=begin
 # => {"@min"=>"5.67",
-  "@fga"=>"1.67",
-  "@fgm"=>"0.33",
-  "@fga3"=>"1.33",
-  "@fgm3"=>"0.33",
-  "@fga4"=>"0.0",
-  "@fgm4"=>"0.0",
-  "@fta2"=>"0.67",
-  "@ftm2"=>"0.0",
-  "@fta3"=>"0.0",
-  "@ftm3"=>"0.0",
-  "@fta4"=>"0.0",
-  "@ftm4"=>"0.0",
-  "@fta1"=>"0.0",
-  "@ftm1"=>"0.0",
-  "@fta"=>"0.67",
-  "@ftm"=>"0.0",
-  "@treb"=>"1.33",
-  "@oreb"=>"0.33",
-  "@dreb"=>"1.0",
-  "@ast"=>"0.67",
-  "@stl"=>"0.67",
-  "@blk"=>"0.0",
-  "@pf"=>"1.0",
-  "@tp"=>"1.0",
-  "@eff"=>"1.67",
-  "@net"=>"23.87",
-  "@plusminus"=>"-3.33",
-  "@to"=>"0.67"}
+	  "@fga"=>"1.67",
+	  "@fgm"=>"0.33",
+	  "@fga3"=>"1.33",
+	  "@fgm3"=>"0.33",
+	  "@fga4"=>"0.0",
+	  "@fgm4"=>"0.0",
+	  "@fta2"=>"0.67",
+	  "@ftm2"=>"0.0",
+	  "@fta3"=>"0.0",
+	  "@ftm3"=>"0.0",
+	  "@fta4"=>"0.0",
+	  "@ftm4"=>"0.0",
+	  "@fta1"=>"0.0",
+	  "@ftm1"=>"0.0",
+	  "@fta"=>"0.67",
+	  "@ftm"=>"0.0",
+	  "@treb"=>"1.33",
+	  "@oreb"=>"0.33",
+	  "@dreb"=>"1.0",
+	  "@ast"=>"0.67",
+	  "@stl"=>"0.67",
+	  "@blk"=>"0.0",
+	  "@pf"=>"1.0",
+	  "@tp"=>"1.0",
+	  "@eff"=>"1.67",
+	  "@net"=>"23.87",
+	  "@plusminus"=>"-3.33",
+	  "@to"=>"0.67"}
+=end
 ```
 
 Optional parameters
