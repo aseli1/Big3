@@ -5,7 +5,7 @@ require 'nori'
 module Big3
   class League
     attr_accessor :games, :game_ids, :game_stats, :player_name, :player_stats, :team_name, :p_s, :t_s
-    
+
     def initialize(args={})
       @player_name = args[:player_name] ||= nil
       @team_name = args[:team_name] ||= nil
@@ -43,9 +43,7 @@ module Big3
         find_season_averages(p_s)
         @p_s
       else
-        puts "Please input a player name. "
-        @player_name = gets.chomp
-        player_stats
+        raise NameError, "player_name is not defined"
       end
     end
 
@@ -68,13 +66,13 @@ module Big3
     end
 
     def add_scoring(scores,
-                    away_team, 
+                    away_team,
                     home_team)
       scores["first half"] = { "home" => home_team['linescore']["lineprd"][0]["@score"],
                                "away" => away_team['linescore']["lineprd"][0]["@score"] }
       scores["second half"] = { "home" => home_team['linescore']["lineprd"][1]["@score"],
                                 "away" => away_team['linescore']["lineprd"][1]["@score"] }
-      scores["final"] = { "home" => home_team['linescore']["@score"], 
+      scores["final"] = { "home" => home_team['linescore']["@score"],
                           "away" => away_team['linescore']["@score"] }
     end
 
@@ -93,35 +91,35 @@ module Big3
       end
     end
 
-    def add_game(scores, 
-                 away_team, 
-                 home_team, 
-                 stats, 
-                 season_team, 
-                 location, 
+    def add_game(scores,
+                 away_team,
+                 home_team,
+                 stats,
+                 season_team,
+                 location,
                  game_count)
       add_scoring(scores, away_team, home_team)
       add_stats(scores, away_team, home_team, stats, location, game_count)
       add_stats_to_season(stats, season_team)
     end
 
-    def names_match?(item, 
+    def names_match?(item,
                      passed_item)
       item["@name"].gsub(/[^A-Za-z]/, "").downcase == passed_item.gsub(/[^A-Za-z]/, "").downcase
     end
 
-    def add_stats(scores, 
-                  away_team, 
-                  home_team, 
-                  stats, 
-                  location, 
+    def add_stats(scores,
+                  away_team,
+                  home_team,
+                  stats,
+                  location,
                   game_count)
       from_both_teams = { "home" => home_team["totals"]["stats"],
                           "away" => away_team["totals"]["stats"] }
       stats["games"] << { "matchup" => "#{home_team["@name"]} vs #{away_team["@name"]}",
                           "home team" => home_team["@name"],
                           "away team" => away_team["@name"],
-                          "scores" => scores, 
+                          "scores" => scores,
                           "stats" => from_both_teams,
                           "location" => location,
                           "game_number" => game_count.to_s }
@@ -137,7 +135,7 @@ module Big3
       stats["name"] = team_name.split.map(&:capitalize).join(' ')
       if names_match?(away_team, team_name)
         add_game(scores, away_team, home_team, stats, season_team, location, game_count)
-      elsif names_match?(home_team, team_name) 
+      elsif names_match?(home_team, team_name)
         add_game(scores, away_team, home_team, stats, season_team, location, game_count)
       end
     end
@@ -179,7 +177,7 @@ module Big3
     end
 
     def find_rosters
-      all_teams = Hash.new { |h, k| h[k] = [] } 
+      all_teams = Hash.new { |h, k| h[k] = [] }
       game_stats.each do |team|
         add_players(team.away_team_players, team.away_team_name, all_teams)
         add_players(team.home_team_players, team.home_team_name, all_teams)
