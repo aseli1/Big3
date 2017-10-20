@@ -154,11 +154,25 @@ module Big3
 
     def retrieve_game_data
       @game_stats = GameManager.new({ids: game_ids}).create_games
+      @game_stats
     end
 
     def teams
       @teams = ["Tri State", "Killer 3s", "Ball Hogs", "3 Headed Monsters", "Trilogy", "Power", "Ghost Ballers", "3's Company"]
       @teams
+    end
+
+    def rosters
+      @rosters ||= find_rosters
+    end
+
+    def find_rosters
+      @rosters = Hash.new { |h, k| h[k] = [] }
+      game_stats.each do |team|
+        add_players(team.away_team_players, team.away_team_name, rosters)
+        add_players(team.home_team_players, team.home_team_name, rosters)
+      end
+      @rosters
     end
 
     def add_players(players,
@@ -174,19 +188,6 @@ module Big3
           league[team_name] << player_name
         end
       end
-    end
-
-    def find_rosters
-      all_teams = Hash.new { |h, k| h[k] = [] }
-      game_stats.each do |team|
-        add_players(team.away_team_players, team.away_team_name, all_teams)
-        add_players(team.home_team_players, team.home_team_name, all_teams)
-      end
-      @rosters = all_teams
-    end
-
-    def rosters
-      @rosters ||= find_rosters
-    end
+    end    
   end
 end
