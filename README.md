@@ -1,6 +1,7 @@
 # Big3
 
-Big3 adds stats from all games played in the Big3 basketball league.  This includes:
+Web scraping tool for stats associated with the Big3 Basketball League.  
+Big3 adds stats from all games played.  This includes:
 
 * Team stats
 * Player stats
