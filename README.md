@@ -2,9 +2,9 @@
 
 Big3 Basketball Stats
 
-* Team stats
-* Player stats
-* Season averages
+* Team
+* Player
+* Season
 * Scores
 * Rosters
 
