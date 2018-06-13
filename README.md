@@ -1,14 +1,12 @@
 # Big3
 
-Web scraping tool for stats associated with the Big3 Basketball League.  
-Big3 adds stats from all games played.  This includes:
+Big3 Basketball Stats
 
 * Team stats
 * Player stats
 * Season averages
 * Scores
 * Rosters
-
 
 ## Installation
 
@@ -17,18 +15,21 @@ Big3 adds stats from all games played.  This includes:
 ## Usage
 
 ```ruby
+require 'big_3'
+
 big_3 = Big3::League.new
 all_games = big_3.team_stats["games"]
-# => Returns a hash containing team stats and scores from all games
+all_games[1]
+# => => {"matchup"=>"Trilogy vs 3 Headed Monsters", "home team"=>"Trilogy", "away team"=>"3 Headed Monsters", "scores"=>{"first half"=>{"home"=>"25", "away"=>"9"}, "second half"=>{"home"=>"25", "away"=>"28"}, "final"=>{"home"=>"50", "away"=>"37"}}...
 ```
 
-Filtering games by team name
+Filter by team
 
 ```ruby
 big_3.team_name = "Ball Hogs"
 ```
 
-Viewing individual player stats
+Player stats
 
 ```ruby
 big_3.player_name = "Moochie Norris"
@@ -42,7 +43,7 @@ Optional parameters
 Big3::League.new(team_name: "Trilogy", player_name: "Mike Bibby")
 ```
 
-Finding teams and players
+Teams and players
 
 ```ruby
 big_3.rosters
